@@ -121,10 +121,10 @@ export default function Home() {
       <section style={{
         minHeight: "100vh",
         background: `
-          radial-gradient(ellipse at 60% 50%, rgba(180,0,0,0.85) 0%, rgba(120,0,0,0.6) 30%, rgba(10,0,0,0.95) 70%),
-          radial-gradient(ellipse at 100% 50%, rgba(140,0,0,0.4) 0%, transparent 60%),
-          linear-gradient(135deg, #0A0000 0%, #1a0000 40%, #0d0000 100%)
-        `,
+          background: `
+  radial-gradient(ellipse at 60% 50%, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.92) 100%),
+  url('/hero.webp') center/cover no-repeat
+`,
         position: "relative",
         overflow: "hidden",
         display: "flex",
