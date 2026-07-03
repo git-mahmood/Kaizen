@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { AlertCircle, Eye, EyeOff } from "lucide-react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuthStore } from "@/lib/store";
 
@@ -14,7 +13,7 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [attempts, setAttempts] = useState(0);
   const [locked, setLocked] = useState(false);
-  const router = useRouter();
+  const [success, setSuccess] = useState(false);
   const login = useAuthStore((s) => s.login);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -37,9 +36,10 @@ export default function LoginPage() {
       return;
     }
 
-    const success = login(email, password);
-    if (success) {
-      router.push("/admin");
+    const result = login(email, password);
+    if (result) {
+      setSuccess(true);
+      window.location.href = "/Kaizen/admin";
     } else {
       const next = attempts + 1;
       setAttempts(next);

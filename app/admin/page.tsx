@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Package, ShoppingCart, TrendingUp, LogOut, ChevronDown } from "lucide-react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuthStore, useOrdersStore, products, Order } from "@/lib/store";
 
@@ -12,14 +11,13 @@ type Tab = "overview" | "products" | "orders";
 export default function AdminPage() {
   const { isLoggedIn, isAdmin, userEmail, logout } = useAuthStore();
   const { orders, updateStatus } = useOrdersStore();
-  const router = useRouter();
   const [tab, setTab] = useState<Tab>("overview");
 
   useEffect(() => {
     if (!isLoggedIn || !isAdmin) {
-      router.push("/login");
+      window.location.href = "/Kaizen/login";
     }
-  }, [isLoggedIn, isAdmin, router]);
+  }, [isLoggedIn, isAdmin]);
 
   if (!isLoggedIn || !isAdmin) {
     return (
@@ -43,7 +41,7 @@ export default function AdminPage() {
         <div className="flex items-center gap-6">
           <span className="text-[10px] text-muted hidden sm:block">{userEmail}</span>
           <button
-            onClick={() => { logout(); router.push("/"); }}
+            onClick={() => { logout(); window.location.href = "/Kaizen/"; }}
             className="text-muted hover:text-bone transition-colors"
           >
             <LogOut size={14} />

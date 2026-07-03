@@ -5,6 +5,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  basePath: "/Kaizen",
+  assetPrefix: "/Kaizen/",
 };
 
 module.exports = nextConfig;
